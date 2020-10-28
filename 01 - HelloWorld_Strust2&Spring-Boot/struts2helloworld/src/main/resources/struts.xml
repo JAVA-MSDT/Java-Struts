@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="default" namespace="/helloworld"
+		extends="struts-default">
+		
+		<interceptors>
+			<interceptor name="login-interceptor"
+				class="com.highq.struts2helloworld.intercept.LoginInterceptor" />
+		</interceptors>
+		
+		<global-results>
+			<result name="login" type="redirect">/index.jsp</result>
+		</global-results>
+		
+		<action name="login"
+			class="com.highq.struts2helloworld.action.HelloWorldAction">
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="login-interceptor" />
+			
+			<result name="success">/pages/success.jsp</result>
+		</action>
+	</package>
+
+
+</struts>
